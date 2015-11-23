@@ -1,12 +1,29 @@
 import re
 
 
-#RETURNS most likely name that answers who query
+#RETURNS list of all names found
 # r: list of strings to be analyzed
 def who(r):
-    pass
+    exp = "[A-Z][a-zA-Z]*\s[A-Z][a-zA-Z]*"
+    result = re.findall(exp,r)
+    return result
 
-#RETURNS most likely date that answers when query
+#RETURNS list of all dates found
 # r: list of strings to be analyzed
 def when(r):
-    pass
+    #exp handles 11/21/15 or November 21, 2015
+    exp = "[0-9]?[0-9]/[0-9]?[0-9]/[0-9][0-9]|[A-Z][a-z]*\s[0-9]?[0-9],\s[0-9]{4}"
+    result = re.findall(exp,s);
+    return result
+
+#RETURNS most frequent item in a list
+def getMode(x):
+    dict={}
+    for item in x:
+        if item in dict:
+            dict[item] += 1
+        else:
+            dict[item] = 1
+    n=dict.keys()
+    m=dict.values()
+    return n[m.index(max(m))]
