@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, redirect
 import json, google, re, requests
 from pyquery import PyQuery as pq
-import analyze
+import analyze, time
 
 app = Flask(__name__)
 
@@ -24,6 +24,7 @@ def main():
         elif "when" in words:
             when = True
         results = []
+        time.sleep(0.01)
         for r in google.search(q, num=10, start=0, stop=1):
             results.append(pq(url=r)('body').text())
             #print results
@@ -35,7 +36,7 @@ def main():
             answer=analyze.getMode(analyze.when(results))
             return render_template('results.html',answer = answer)
         else:
-            return render_template('error.html')
+            return render_template('home.html')
 
 if __name__ == "__main__":
     app.debug = True
