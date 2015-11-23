@@ -5,7 +5,12 @@ import re
 # r: list of strings to be analyzed
 def who(r):
     exp = "[A-Z][a-zA-Z]*\s[A-Z][a-zA-Z]*"
-    result = re.findall(exp,r)
+    result = []
+    #thing is one string in the list
+    for thing in r:
+        temp = re.findall(exp,thing)
+        for item in temp:
+            result.append(item)
     return result
 
 #RETURNS list of all dates found
@@ -13,7 +18,12 @@ def who(r):
 def when(r):
     #exp handles 11/21/15 or November 21, 2015
     exp = "[0-9]?[0-9]/[0-9]?[0-9]/[0-9][0-9]|[A-Z][a-z]*\s[0-9]?[0-9],\s[0-9]{4}"
-    result = re.findall(exp,s);
+    result = []
+    #thing is one string in the list
+    for thing in f:
+        temp = re.findall(exp,thing)
+        for item in temp:
+            result.append(item)
     return result
 
 #RETURNS most frequent item in a list
