@@ -1,5 +1,5 @@
 import re
-
+from collections import Counter
 
 #RETURNS list of all names found
 # r: list of strings to be analyzed
@@ -8,6 +8,7 @@ def who(r):
     result = []
     #thing is one string in the list
     for thing in r:
+        #ADD REGULAR EXPRESSION TO GET RID OF WORDS THAT ARE OBVIOUSLY NOT NAMES
         temp = re.findall(exp,thing)
         for item in temp:
             result.append(item)
@@ -20,7 +21,8 @@ def when(r):
     exp = "[0-9]?[0-9]/[0-9]?[0-9]/[0-9][0-9]|[A-Z][a-z]*\s[0-9]?[0-9],\s[0-9]{4}"
     result = []
     #thing is one string in the list
-    for thing in f:
+    for thing in r:
+        #ADD SAME REGULAR EXPRESSION AS ABOVE TO GET RID OF WORDS THAT ARE OBVIOUSLY NOT NAMES
         temp = re.findall(exp,thing)
         for item in temp:
             result.append(item)
@@ -36,4 +38,5 @@ def getMode(x):
             dict[item] = 1
     n=dict.keys()
     m=dict.values()
+    print x
     return n[m.index(max(m))]
