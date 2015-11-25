@@ -24,7 +24,6 @@ def main():
         elif "when" in words:
             when = True
         results = []
-        time.sleep(0.01)
         for r in google.search(q, num=10, start=0, stop=1):
             results.append(pq(url=r)('body').text())
             #print results
