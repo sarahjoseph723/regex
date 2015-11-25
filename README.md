@@ -8,3 +8,5 @@
   - [ ] WHO queries
   - [ ] WHEN queries
   - [ ] WHERE queries (?)
+  - [ ] Clean text
+- [ ] Make basic css
